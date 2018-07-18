@@ -35,9 +35,11 @@ export declare class USBAdapter extends EventEmitter implements Adapter {
     constructor();
     private serialPromises<T>(task, params);
     private serialDevicePromises<T>(task, device, descriptors);
+    private delay(timeout?);
+    private retryPromise(fn, retries?, timeout?);
     private loadDevices();
-    private loadDevice(device);
-    private getCapabilities(device);
+    private loadDevice(device, retries?);
+    private getCapabilities(device, retries);
     private getDeviceCapabilities(device, callback);
     private getBosDescriptor(device, callback);
     private getWebCapability(capabilities);
@@ -57,6 +59,7 @@ export declare class USBAdapter extends EventEmitter implements Adapter {
     private configToUSBConfiguration(device, descriptor);
     private getDevice(handle);
     private controlTransferParamsToType(setup, direction);
+    private openDevice(device, retries?);
     getConnected(handle: string): boolean;
     getOpened(handle: string): boolean;
     listUSBDevices(): Promise<Array<USBDevice>>;
