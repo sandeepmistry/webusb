@@ -33,6 +33,7 @@ export declare class USBAdapter extends EventEmitter implements Adapter {
     static EVENT_DEVICE_DISCONNECT: string;
     private devices;
     constructor();
+    private getDeviceHandle(device);
     private serialPromises<T>(task, params);
     private serialDevicePromises<T>(task, device, descriptors);
     private delay(timeout?);
